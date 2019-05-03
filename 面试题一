@@ -1,0 +1,30 @@
+-- create table student (name_id int,subject char(5),score int)
+-- create table student (name_id int,name char(10),age int, sex char(3))
+-- insert into score 
+-- VALUES 
+-- (1,'语文',85),
+-- (2,'数学',90),
+-- (1,'英语',98),
+-- (3,'语文',99),
+-- (2,'语文',85),
+-- (1,'数学',80),
+-- (2,'英语',98),
+-- (3,'数学',90),
+-- (3,'英语',98)
+-- insert into student VALUES
+-- (1,'小明',9,'男'),
+-- (2,'小红',10,'女'),
+-- (3,'小李',11,'男')
+#求出该班级语文的平均分
+-- select AVG(score) from score where subject='语文'
+#统计该班男生人数
+-- select count(sex) from student where sex='男'
+
+#语数英3科平均分在90分以上的同学
+
+-- select name from student where name_id in
+-- (select name_id from score GROUP BY name_id HAVING sum(score)>270) 
+#（group by 使用时如果是有条件的，就得用having, 不得使用where）
+
+#语数英3科中有2科大于90分的同学
+select name_id from score where score>90 group by name_id having count(name_id)>=2
